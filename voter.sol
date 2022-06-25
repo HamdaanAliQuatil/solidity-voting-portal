@@ -4,6 +4,7 @@ pragma experimental ABIEncoderV2;
 contract Voter{
     uint[] public votes;
     string[] public options;
+    mapping (address => bool) hasVoted;
 
     constructor(string[] _options) public{
         options = _options;
@@ -12,7 +13,10 @@ contract Voter{
 
     function vote(uint option) public{
         require(0 <= option && option < options.length, "Invalid option");
+        require((!hasVoted[msg.sender]), "You have already voted");
+        
         votes[option]++;
+        hasVoted[msg.sender] = true;
     }
 
     function getOptions() public view returns (string[]){
