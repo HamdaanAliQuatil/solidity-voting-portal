@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 
 contract Voter{
@@ -12,13 +12,15 @@ contract Voter{
     mapping (address => bool) hasVoted;
     mapping (string => OptionPos) posOfOption;
 
-    constructor(string[] _options) public{
+    constructor(string[] memory _options){
         options = _options;
-        votes.length = options.length;
+        // votes.length = options.length;
+        delete votes;
+        votes.push(_options.length);
 
         for(uint i=0; i< options.length; i++){
             OptionPos memory optionPos = OptionPos(i, true);
-            string optionName = options[i];
+            string memory optionName = options[i];
             posOfOption[optionName] = optionPos;
         }
     }
@@ -31,7 +33,7 @@ contract Voter{
         hasVoted[msg.sender] = true;
     }
 
-    function vote(string optionName) public{
+    function vote(string memory optionName) public{
         require(!hasVoted[msg.sender], "You have already voted");
 
         OptionPos memory optionPos = posOfOption[optionName];
@@ -41,11 +43,11 @@ contract Voter{
         hasVoted[msg.sender] = true;
     }
 
-    function getOptions() public view returns (string[]){
+    function getOptions() public view returns (string[] memory){
         return options;
     }
 
-    function getVotes() public view returns (uint[]){
+    function getVotes() public view returns (uint[] memory){
         return votes;
     }
 }

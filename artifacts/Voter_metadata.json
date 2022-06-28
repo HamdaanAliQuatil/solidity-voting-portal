@@ -86,6 +86,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "optionName",
+						"type": "string"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"name": "_options",
@@ -118,9 +132,9 @@
 	},
 	"sources": {
 		"voter.sol": {
-			"keccak256": "0x1f58b228556cbda98876b08388dde175c23d44ebcee012a64c9f8bba87c55fdf",
+			"keccak256": "0xc58ce41f8473b8ec0cd78ef6d6d176355519ab210899b592a4d1aeb38bdbe70b",
 			"urls": [
-				"bzzr://3340a91cd4c64a0823c620e192751a9559a56b795c7bcdc4c5617dff4043d7e1"
+				"bzzr://0b3414dd1d47d3486610199d091732f77d870c2b585b6ba4e03401f6d328f3db"
 			]
 		}
 	},
